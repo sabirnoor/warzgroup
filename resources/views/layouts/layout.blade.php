@@ -47,7 +47,9 @@
     <script src="{{ asset('public/assets/js/masonry.pkgd.js') }}"></script>
     <!-- particles js -->
     <script src="{{ asset('public/assets/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('public/assets/js/jquery.nice-select.min.js') }}"></script>
+	
+    <!-- <script src="{{ asset('public/assets/js/jquery.nice-select.min.js') }}"></script>-->
+	
     <!-- swiper js -->
     <script src="{{ asset('public/assets/js/slick.min.js') }}"></script>
     <script src="{{ asset('public/assets/js/jquery.counterup.min.js') }}"></script>

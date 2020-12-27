@@ -126,6 +126,9 @@ $controller = explode('@', $class_basename);
         .jssora051.jssora051dn {opacity:.5;}
         .jssora051.jssora051ds {opacity:.3;pointer-events:none;}
     </style>
+	<script>
+            var site_url = "{!! url('/') !!}";
+        </script>
 </head>
 <body>
     <div>
@@ -146,7 +149,7 @@ $controller = explode('@', $class_basename);
     <script src="{{ asset('public/assets/js/masonry.pkgd.js') }}"></script>
     <!-- particles js -->
     <script src="{{ asset('public/assets/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('public/assets/js/jquery.nice-select.min.js') }}"></script>
+    <!-- <script src="{{ asset('public/assets/js/jquery.nice-select.min.js') }}"></script>-->
     <!-- swiper js -->
     <script src="{{ asset('public/assets/js/slick.min.js') }}"></script>
     <script src="{{ asset('public/assets/js/jquery.counterup.min.js') }}"></script>
@@ -285,5 +288,173 @@ $controller = explode('@', $class_basename);
     jssor_1_slider_init();
     </script>
 
+
+<?php if ($controller[1] == 'registration') {?>
+<script>
+$(window).load(function() {
+    // page is fully loaded, including all frames, objects and images    
+	show_address_fields();
+});	
+
+$('#post_applied_for').on('change',function(){
+    show_address_fields();
+});
+
+function show_address_fields(){
+	if( $('#post_applied_for').val()==="Tola Teacher(T.T)"){
+			
+			$("#applying_ward_div").show();
+			$("#applying_panchayat_div").show();
+			$("#applying_block_div").show();
+			$("#applying_district_div").show();
+			
+			$("#applying_ward").attr('required','true');
+			$("#applying_panchayat").attr('required','true');
+			$("#applying_block").attr('required','true');
+			$("#applying_district").attr('required','true');
+			
+
+			$("#exam_passed2").removeAttr('required');
+			$("#board_or_university2").removeAttr('required');
+			$("#appeared_or_passed2").removeAttr('required');
+			$("#passed_year2").removeAttr('required');
+			$("#marks2").removeAttr('required');
+			$("#marksheet2").removeAttr('required');
+			
+			
+			$("#exam_passed3").removeAttr('required');
+			$("#board_or_university3").removeAttr('required');
+			$("#appeared_or_passed3").removeAttr('required');
+			$("#passed_year3").removeAttr('required');
+			$("#marks3").removeAttr('required');
+			$("#marksheet3").removeAttr('required');
+			
+        }
+		if( $('#post_applied_for').val()==="Panchayat Coordinator(P.C.)"){
+			
+			$("#applying_ward_div").hide();
+			$("#applying_panchayat_div").show();
+			$("#applying_block_div").show();
+			$("#applying_district_div").show();
+			
+			$("#applying_ward").removeAttr('required');
+			$("#applying_panchayat").attr('required','true');
+			$("#applying_block").attr('required','true');
+			$("#applying_district").attr('required','true');
+			
+			$("#exam_passed2").attr('required','true');
+			$("#board_or_university2").attr('required','true');
+			$("#appeared_or_passed2").attr('required','true');
+			$("#passed_year2").attr('required','true');
+			$("#marks2").attr('required','true');
+			$("#marksheet2").attr('required','true');
+			
+			$("#exam_passed3").removeAttr('required');
+			$("#board_or_university3").removeAttr('required');
+			$("#appeared_or_passed3").removeAttr('required');
+			$("#passed_year3").removeAttr('required');
+			$("#marks3").removeAttr('required');			
+			$("#marksheet3").removeAttr('required');			
+			
+        }
+		if( $('#post_applied_for').val()==="Block Coordinator(B.C.)"){
+			$("#applying_ward_div").hide();
+			$("#applying_panchayat_div").hide();
+			$("#applying_block_div").show();
+			$("#applying_district_div").show();
+			
+			$("#applying_ward").removeAttr('required');
+			$("#applying_panchayat").removeAttr('required');
+			$("#applying_block").attr('required','true');
+			$("#applying_district").attr('required','true');
+			
+			$("#exam_passed2").attr('required','true');
+			$("#board_or_university2").attr('required','true');
+			$("#appeared_or_passed2").attr('required','true');
+			$("#passed_year2").attr('required','true');
+			$("#marks2").attr('required','true');
+			$("#marksheet2").attr('required','true');
+			
+			$("#exam_passed3").attr('required','true');
+			$("#board_or_university3").attr('required','true');
+			$("#appeared_or_passed3").attr('required','true');
+			$("#passed_year3").attr('required','true');
+			$("#marks3").attr('required','true');
+			$("#marksheet3").attr('required','true');
+        }
+		
+		if( $('#post_applied_for').val()==="District Coordinator(D.C.)"){
+			
+			$("#applying_ward_div").hide();
+			$("#applying_panchayat_div").hide();
+			$("#applying_block_div").hide();
+			$("#applying_district_div").show();
+			
+			$("#applying_ward").removeAttr('required');
+			$("#applying_panchayat").removeAttr('required');
+			$("#applying_block").removeAttr('required');
+			$("#applying_district").attr('required','true');
+			
+			$("#exam_passed2").attr('required','true');
+			$("#board_or_university2").attr('required','true');
+			$("#appeared_or_passed2").attr('required','true');
+			$("#passed_year2").attr('required','true');
+			$("#marks2").attr('required','true');
+			$("#marksheet2").attr('required','true');
+			
+			$("#exam_passed3").attr('required','true');
+			$("#board_or_university3").attr('required','true');
+			$("#appeared_or_passed3").attr('required','true');
+			$("#passed_year3").attr('required','true');
+			$("#marks3").attr('required','true');
+			$("#marksheet3").attr('required','true');
+        }
+}
+
+$(document).on("change", "#applying_district", function (e) { 
+        //e.preventDefault();
+        var district_id = $('#applying_district').val(); 
+        
+
+        $.ajax({
+            url: site_url + '/get-district-blocks',
+            type: 'POST',
+            data: {district_id: district_id},
+            dataType: 'json',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            beforeSend: function () {
+                $('.loader_data').html('<div class="loading">Loading&#8230;</div>');
+            },
+            success: function (result) {
+                if (result) {  //alert(result);
+                    
+					var HTML = '';
+                    HTML += '<option value="">--Select--</option>';
+                    $.each(result.data, function (i, item) {
+                        if(!item.name){item.name='N/A';}
+						
+						HTML += '<option value="' + item.id + '">' + item.name +'</option>'; 
+                    });
+                    $('#applying_block').html(HTML); 
+                    
+                    $('.loader_data').html('');
+
+                }else{
+                    var HTML = '';
+                    HTML += '<option value="">--Select--</option>';
+                    $('#applying_block').html(HTML);
+                    
+                }
+
+            },
+            error: function (result) {
+                $('.loader_data').html('');
+            }
+
+        });
+
+    });
+</script>
+<?php }?>
 </body>
 </html>
