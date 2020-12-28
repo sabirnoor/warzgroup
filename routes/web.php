@@ -27,8 +27,10 @@ Route::get('/about', 'FrantController@about');
 
 Route::prefix('ubsk')->group(function () {
 	Route::match(['get', 'post'], '/', array('uses' => 'UbskController@index'));
-	Route::get('registration', 'UbskController@registration');
+	Route::match(['get', 'post'], '/registration', array('uses' => 'UbskController@registration'));
+	//Route::get('registration', 'UbskController@registration');
 	Route::get('aboutus', 'UbskController@aboutus');
 });
 
+Route::match(['get', 'post'], '/get-district-blocks', array('uses' => 'UbskController@getblocksbydistrict'));
 
