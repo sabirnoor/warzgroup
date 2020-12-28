@@ -7,6 +7,7 @@ use App\Registration;
 use App\Qualification;
 use App\District;
 use App\Block;
+use Validator;
 
 class UbskController extends Controller
 {
@@ -32,6 +33,17 @@ class UbskController extends Controller
 /*     public function registration(Request $request){
 		return view('ubsk/registration');
 	} */
+	
+	public function upload_path() {
+		if (is_localhost()) {
+			$path = public_path() . '/upload/';
+		} else {
+			$path = public_path() . '/upload/';
+		}
+
+		return $path;
+	}
+	
 	public function registration(Request $request, $id = null){
         $RegistrationList = Registration::where(array('IsDelete' => 0))->orderBy('id', 'ASC')->get();
         if ($request->isMethod('post')){
@@ -104,7 +116,7 @@ class UbskController extends Controller
                 'mobile' => $post['mobile'],
                 'aadhar' => $post['aadhar'],
                 'gender' => $post['gender'],
-                'dob' => DateFormates($post['dob'],'-'),
+                //'dob' => DateFormates($post['dob'],'-'),
                 'IsDelete' => 0,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -255,12 +267,12 @@ class UbskController extends Controller
 				
 				}
                 
-				return redirect('registration')->with('msgsuccess', 'Save successfully');
+				return redirect('ubsk/registration')->with('msgsuccess', 'Save successfully');
             
 			}else{
                $insert = Registration::where('id', $id)->update($data);			   
 			   
-               return redirect('registration')->with('msgsuccess', 'Update successfully');
+               return redirect('ubsk/registration')->with('msgsuccess', 'Update successfully');
             }
         }
         
