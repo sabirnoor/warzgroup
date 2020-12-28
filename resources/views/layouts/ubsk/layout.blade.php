@@ -61,16 +61,12 @@ $controller = explode('@', $class_basename);
     .navbarhome .nav-item:hover a{
         color: #fff !important;
     }
-    .navbarhome .nav-item a{
-        font-size: 15px !important;
-        color: #fff !important;
-        
-    }
+    
     
     
     .holder { 
         background-color:#ccc;
-        width:300px;
+        width:auto;
         height:295px;
         overflow:hidden;
         padding:10px;

@@ -24,6 +24,11 @@
             <nav class="navbar navbar-expand-sm navbar-light bg-light "> 
                 <div class="container"> 
                    
+                    
+        
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
+                        @include('ubsk.menu')
+                    </div> 
                     <button class="navbar-toggler" type="button" 
                             data-toggle="collapse"
                             data-target="#navbarSupportedContent"
@@ -34,10 +39,6 @@
                     </button> 
         
                     <div class="collapse navbar-collapse"></div> 
-        
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
-                        @include('ubsk.menu')
-                    </div> 
                 </div> 
             </nav> 
             </div>

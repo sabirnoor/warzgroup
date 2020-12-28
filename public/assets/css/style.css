@@ -48,13 +48,36 @@ input:hover, input:focus {
     padding: 70px 0px;
   }
 }
-
+.navbarhome .nav-item a{
+  font-size: 15px !important;
+  color: #fff !important;
+  
+}
 @media (max-width: 576px) {
   
   .section_padding {
     padding: 70px 0px;
   }
+
+  .customLogoname {
+    font-size: 28px !important;
+    padding: 1px 16px;
+  }
+  .customLogo {
+    padding: 0px 3px 5px 112px !important;
+    margin: 0;
+    display: inline-block;
+  }
+  .customLogo img {
+    height: 100px;
+  }
+  .navbarhome .nav-item a {
+      font-size: 15px !important;
+      color: #2d2828 !important;
+  }
+
 }
+
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   
@@ -2137,7 +2160,7 @@ ul {
 
 /* line 8, E:/172 Etrain Education/172_Etrain_Education_html/sass/_menu.scss */
 .main_menu .navbar-brand {
-  padding: 0rem !important;
+  padding: 0rem;
 }
 
 /* line 12, E:/172 Etrain Education/172_Etrain_Education_html/sass/_menu.scss */

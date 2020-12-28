@@ -1,4 +1,4 @@
-<ul class="navbar-nav mr-auto"> 
+<ul class="navbar-nav mr-auto navbarhomecu"> 
     <li class="nav-item active"> 
         <a class="nav-link" 
         href="{{url('ubsk')}}"> 
