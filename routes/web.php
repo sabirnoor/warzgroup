@@ -30,6 +30,7 @@ Route::prefix('ubsk')->group(function () {
 	Route::match(['get', 'post'], '/registration', array('uses' => 'UbskController@registration'));
 	//Route::get('registration', 'UbskController@registration');
 	Route::get('aboutus', 'UbskController@aboutus');
+	Route::get('gallery', 'UbskController@gallery');
 });
 
 Route::match(['get', 'post'], '/get-district-blocks', array('uses' => 'UbskController@getblocksbydistrict'));

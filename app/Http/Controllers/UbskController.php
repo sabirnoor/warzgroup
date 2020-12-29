@@ -30,9 +30,7 @@ class UbskController extends Controller
     {
         return view('ubsk/index');
     }
-/*     public function registration(Request $request){
-		return view('ubsk/registration');
-	} */
+     
 	
 	public function upload_path() {
 		if (is_localhost()) {
@@ -305,5 +303,9 @@ class UbskController extends Controller
 	
     public function aboutus(Request $request){
 		return view('ubsk/aboutus');
+	}
+	
+	public function gallery(Request $request){
+		return view('ubsk/gallery');
 	}
 }
