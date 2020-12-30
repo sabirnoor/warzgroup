@@ -169,7 +169,7 @@
 					<div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="title"> DOB </label>
                         <div class="col-sm-9">
-                            <input type="text" id="dob" name="dob" autocomplete value="" placeholder="Pick Date" class="col-xs-10 col-sm-5 dateofbirth" required>
+                            <input type="date" id="dob" name="dob" autocomplete value="" placeholder="Pick Date" class="col-xs-10 col-sm-5 dateofbirth" required>
                         </div>
                     </div>
 					
@@ -394,18 +394,7 @@
                     <h4 class="mb-20">Latest Updates</h4>
                     <div class="holder">
                         <ul id="ticker01">
-                                <li><span>10/10/2007</span> <a href="#">The first thing that most Javascript programmers</a></li>
-                                <li><span>10/10/2007</span> <a href="#">End up doing is adding some code</a></li>
-                                <li><span>10/10/2007</span> <a href="#">The code that you want to run</a></li>
-                                <li><span>08/10/2007</span> <a href="#">Inside of which is the code that you want to run</a></li>
-                                <li><span>08/10/2007</span> <a href="#">Right when the page is loaded</a></li>
-                                <li><span>05/10/2007</span> <a href="#">Problematically, however, the Javascript code</a></li>
-                                <li><span>04/10/2007</span> <a href="#">The first thing that most Javascript programmers</a></li>
-                                <li><span>04/10/2007</span> <a href="#">End up doing is adding some code</a></li>
-                                <li><span>04/10/2007</span> <a href="#">The code that you want to run</a></li>
-                                <li><span>03/10/2007</span> <a href="#">Inside of which is the code that you want to run</a></li>
-                                <li><span>03/10/2007</span> <a href="#">Right when the page is loaded</a></li>
-                                <li><span>01/10/2007</span> <a href="#">Problematically, however, the Javascript code</a></li>
+                                <li><span>01/10/2020</span> <a href="{{url('ubsk/registration')}}">Registration is going on.</a></li>
                         </ul>
                     </div>
                 </div>

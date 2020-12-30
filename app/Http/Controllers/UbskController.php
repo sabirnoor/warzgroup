@@ -43,6 +43,9 @@ class UbskController extends Controller
 	}
 	
 	public function registration(Request $request, $id = null){
+		
+		$upload_path = public_path() . '/upload/';
+		
         $RegistrationList = Registration::where(array('IsDelete' => 0))->orderBy('id', 'ASC')->get();
         if ($request->isMethod('post')){
             $post = $request->all(); //echo '<pre>';print_r($post);die;
@@ -64,8 +67,8 @@ class UbskController extends Controller
                 $file = explode('.', $imageName);
                 $imageName = $file[0]. '_' . md5(microtime()) . '.' . end($file);
 				$imageName = str_replace(' ','_',$imageName);
-                if (!file_exists(upload_path() . 'photos/'. $imageName)) {
-                    $path = upload_path() . 'photos/';
+                if (!file_exists($upload_path . 'photos/'. $imageName)) {
+                    $path = $upload_path . 'photos/';
                     $image->move($path, $imageName);
                 }
             }
@@ -87,8 +90,8 @@ class UbskController extends Controller
 				$file = explode('.', $imageName2);
 				$imageName2 = $file[0]. '_' . md5(microtime()) . '.' . end($file);
 				$imageName2 = str_replace(' ','_',$imageName2);
-				if (!file_exists(upload_path() . 'signatures/'. $imageName2)) {
-					$path = upload_path() . 'signatures/';
+				if (!file_exists($upload_path . 'signatures/'. $imageName2)) {
+					$path = $upload_path . 'signatures/';
 					$image->move($path, $imageName2);
 				}
 			}
@@ -150,8 +153,8 @@ class UbskController extends Controller
 						$file = explode('.', $imageName);
 						$imageName = $file[0]. '_' . md5(microtime()) . '.' . end($file);
 						$imageName = str_replace(' ','_',$imageName);
-						if (!file_exists(upload_path() . 'marksheets/'. $imageName)) {
-							$path = upload_path() . 'marksheets/';
+						if (!file_exists($upload_path . 'marksheets/'. $imageName)) {
+							$path = $upload_path . 'marksheets/';
 							$image->move($path, $imageName);
 						}
 					}
@@ -193,8 +196,8 @@ class UbskController extends Controller
 					$file = explode('.', $imageName);
 					$imageName = $file[0]. '_' . md5(microtime()) . '.' . end($file);
 					$imageName = str_replace(' ','_',$imageName);
-					if (!file_exists(upload_path() . 'marksheets/'. $imageName)) {
-						$path = upload_path() . 'marksheets/';
+					if (!file_exists($upload_path . 'marksheets/'. $imageName)) {
+						$path = $upload_path . 'marksheets/';
 						$image->move($path, $imageName);
 					}
 				}
@@ -239,8 +242,8 @@ class UbskController extends Controller
 					$file = explode('.', $imageName);
 					$imageName = $file[0]. '_' . md5(microtime()) . '.' . end($file);
 					$imageName = str_replace(' ','_',$imageName);
-					if (!file_exists(upload_path() . 'marksheets/'. $imageName)) {
-						$path = upload_path() . 'marksheets/';
+					if (!file_exists($upload_path . 'marksheets/'. $imageName)) {
+						$path = $upload_path . 'marksheets/';
 						$image->move($path, $imageName);
 					}
 				}
