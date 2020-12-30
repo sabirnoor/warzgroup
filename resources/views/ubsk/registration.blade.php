@@ -364,6 +364,29 @@
 	</tr>
 	
 </table>
+
+<div class="form-group">
+  <label for="comment">Term & Condition:</label>
+  <textarea class="form-control" rows="5" id="comment" readonly>
+  
+● Trust may ask each Student to Pay minimum INR 90 or any amount lass than INR 150 per month, Trust need your full co-operation in collecting money from Students.
+  
+● The teacher must not work in another place without the permission from the trust. 
+
+● For Panchayat coordinator and Block coordinator monthly payment will start only when all the centers in your Panchayat(for  Panchayat coordinator) and in your block(for block coordinator)will be open and students would start coming to the respective centers.
+
+I here be declare that the information given by me in this application is true and correct to the best of my knowledge and I have read all the above term and conditions.
+
+
+  </textarea>
+</div>
+
+<div class="form-check mb-4">
+  <label class="form-check-label">
+    <input type="checkbox" name="tandc" class="form-check-input" value="1" required>I agree with term and condition.
+  </label>
+</div>
+
 					
 					
                     <div class="space-4"></div>
@@ -381,8 +404,23 @@
                
 
                 <div class="hr hr32 hr-dotted"></div>
+		
+<h2 class="mt-4">Account Details:</h2>
 
+		
+<p style="color:#000" class="">
+<strong>Account Holder Name:</strong> Ramiz Bari<br />
+<strong>Bank:</strong> State Bank Of India<br />
+<strong>A/C Number:</strong> 30397219958<br />
+<strong>IFSC:</strong> SBIN0016011<br />
+<strong>Branch:</strong> Jalalgarh, Purnea branch<br />
+</p>
 
+<h2 class="mt-4">UPI Details:</h2>
+
+<strong> Phone Pay, Google pay, Paytm:</strong> 9097-566-878
+
+<br /><br /><br />
 
                 <!-- PAGE CONTENT ENDS -->
             </div><!-- /.col -->
