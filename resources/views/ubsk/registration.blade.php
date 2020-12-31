@@ -169,7 +169,7 @@
 					<div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="title"> DOB </label>
                         <div class="col-sm-9">
-                            <input type="date" id="dob" name="dob" autocomplete value="" placeholder="Pick Date" class="col-xs-10 col-sm-5 dateofbirth" required>
+                            <input type="date" min="1975-01-01" max="2020-12-31" id="dob" name="dob" autocomplete value="" placeholder="Pick Date" class="col-xs-10 col-sm-5 dateofbirth"  required>
                         </div>
                     </div>
 					
