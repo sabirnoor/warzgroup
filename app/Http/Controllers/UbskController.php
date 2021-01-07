@@ -280,7 +280,12 @@ class UbskController extends Controller
 				
 				}
                 
-				return redirect('ubsk/registration')->with('msgsuccess', 'Save successfully');
+				//return redirect('ubsk/registration')->with('msgsuccess', 'Save successfully');
+				
+				//redirect to print page after successful form submission
+				$details = Registration::where(array('id' => $insert))->first();
+				$encrypted_reg_no = base64_encode($details->registration_no);
+				return redirect('ubsk/show_reg_form/'.$encrypted_reg_no);
             
 			}else{
                $insert = Registration::where('id', $id)->update($data);			   
@@ -304,13 +309,13 @@ class UbskController extends Controller
 		
 		$post = $request->all(); //echo '<pre>';print_r($post);die;
 		if(!isset($post['reg_no']) || !isset($post['dob']) || !isset($post['mobile'])){
-			return redirect('ubsk/get_reg_form')->with('msgerror', 'Error Occured!');
+			return redirect('ubsk/get_reg_form')->with('msgerror', 'Some Error Occured!');
 		}
 		//$details = Registration::where(array('registration_no' => $reg_no))->first();
 		
 		$details = DB::table('registration as r')->select('r.*', 'd.name as district_name', 'b.name as block_name')
-			->join('district as d', 'd.id', '=', 'r.applying_district')
-			->join('block as b', 'b.id', '=', 'r.applying_block')
+			->join('district as d', 'd.id', '=', 'r.applying_district', 'LEFT')
+			->join('block as b', 'b.id', '=', 'r.applying_block', 'LEFT')
 			->where('r.registration_no', $post['reg_no'])
 			->where('r.dob', $post['dob'])
 			->where('r.mobile', $post['mobile'])
@@ -325,9 +330,37 @@ class UbskController extends Controller
 		if(isset($details->id)){
 			$registration_id = $details->id;
 			$qual_details = Qualification::where(array('registration_id' => $registration_id))->get();
+		}		
+		
+		//print_r($qual_details); exit;
+		
+		return view('ubsk/print_reg_form', compact('details','qual_details'));
+	}
+	
+	//Show Registration form after user submit registration form
+	public function show_registration_form(Request $request,$encrypted_reg_no=null){
+		
+		if(!isset($encrypted_reg_no)){
+			return redirect('ubsk/get_reg_form')->with('msgerror', 'Some Error Occured!');
 		}
+		$reg_no = base64_decode($encrypted_reg_no);
 		
+		$details = DB::table('registration as r')->select('r.*', 'd.name as district_name', 'b.name as block_name')
+			->join('district as d', 'd.id', '=', 'r.applying_district', 'LEFT')
+			->join('block as b', 'b.id', '=', 'r.applying_block', 'LEFT')
+			->where('r.registration_no', $reg_no)			
+			->first();
+			//var_dump($details);die;
+		if(!isset($details->id)){
+			return redirect('ubsk/get_reg_form')->with('msgerror', 'No record found!');
+		}
+			
+		$qual_details = null;
 		
+		if(isset($details->id)){
+			$registration_id = $details->id;
+			$qual_details = Qualification::where(array('registration_id' => $registration_id))->get();
+		}		
 		
 		//print_r($qual_details); exit;
 		
