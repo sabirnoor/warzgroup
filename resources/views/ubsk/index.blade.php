@@ -148,6 +148,14 @@
                         </ul>
                     </div>
                 </div>
+				<div class="single-defination">
+                    <h4 class="mb-20">Important Links</h4>
+                    <div class="holder">
+                        <ul id="ticker01">
+                                <li><a href="{{url('ubsk/get_reg_form')}}">Print Registration Form.</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

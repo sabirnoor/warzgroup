@@ -77,7 +77,8 @@
             btnText.innerHTML = "Read less"; 
             //moreText.style.display = "inline";
         }
-        }
+        }		
+		
         </script>
 
 </body>

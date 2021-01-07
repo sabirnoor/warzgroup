@@ -28,4 +28,7 @@ class FrantController extends Controller
     public function about(Request $request){
 		return view('pages/about');
 	}
+	public function donate(Request $request){
+		return view('pages/donate');
+	}
 }

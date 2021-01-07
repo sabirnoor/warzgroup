@@ -72,7 +72,7 @@
 							
 					
 					<div class="form-group">
-						<label class="col-sm-3 control-label no-padding-right" for=""> Post Applied For </label>
+						<label class="col-sm-3 control-label no-padding-right" for=""> Post Applied For* </label>
 						<div class="col-sm-9">
 							<select name="post_applied_for" id="post_applied_for" class="col-xs-10 col-sm-5"  required>
 								
@@ -89,7 +89,7 @@
 					
 				
 				<div class="form-group" id="applying_district_div" style="display:none">
-						<label class="col-sm-3 control-label no-padding-right" for=""> District </label>
+						<label class="col-sm-3 control-label no-padding-right" for=""> District* </label>
 						<div class="col-sm-9">
 							<select name="applying_district" id="applying_district" class="col-xs-10 col-sm-5"  required>
 								
@@ -113,7 +113,7 @@
 					</div>
 					
 					<div class="form-group" id="applying_block_div" style="display:none">
-					<label class="col-sm-3 control-label no-padding-right" for=""> Block </label>
+					<label class="col-sm-3 control-label no-padding-right" for=""> Block* </label>
 					
 					<div class="col-sm-9">
 							<select name="applying_block" id="applying_block" class="col-xs-10 col-sm-5">								
@@ -125,7 +125,7 @@
 				</div>
 				
 				<div class="form-group" id="applying_panchayat_div"  style="display:none">
-					<label class="col-sm-3 control-label no-padding-right" for=""> Panchayat </label>
+					<label class="col-sm-3 control-label no-padding-right" for=""> Panchayat* </label>
 					<div class="col-sm-9">
 						<input type="text" id="applying_panchayat" name="applying_panchayat" value="" class="col-xs-10 col-sm-5">
 					</div>
@@ -133,7 +133,7 @@
 					
 					
 				<div class="form-group" id="applying_ward_div" style="display:none">
-					<label class="col-sm-3 control-label no-padding-right" for=""> Ward </label>
+					<label class="col-sm-3 control-label no-padding-right" for=""> Ward* </label>
 					<div class="col-sm-9">
 						<input type="text" id="applying_ward" name="applying_ward" value="" class="col-xs-10 col-sm-5">
 					</div>
@@ -142,21 +142,28 @@
 					<h3 class="" style="padding-left:100px;">Personal Detail</h3>
 					
 					<div class="form-group">
-						<label class="col-sm-3 control-label no-padding-right" for=""> Candidate Name </label>
+						<label class="col-sm-3 control-label no-padding-right" for=""> Candidate Name* </label>
 						<div class="col-sm-9">
 							<input type="text" id="candidate_name" name="candidate_name" value="" class="col-xs-10 col-sm-5" required>
 						</div>
 					</div>
 					
 					<div class="form-group">
-	<label class="col-sm-3 control-label no-padding-right" for=""> Father's/Husband's Name </label>
-	<div class="col-sm-9">
-		<input type="text" id="father_name" name="father_name" value="" class="col-xs-10 col-sm-5" required>
-	</div>
-</div>
+						<label class="col-sm-3 control-label no-padding-right" for=""> Father's Name* </label>
+						<div class="col-sm-9">
+							<input type="text" id="father_name" name="father_name" value="" class="col-xs-10 col-sm-5" required>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for=""> Husband's Name </label>
+						<div class="col-sm-9">
+							<input type="text" id="husband_name" name="husband_name" value="" class="col-xs-10 col-sm-5">
+						</div>
+					</div>
 
 <div class="form-group">
-	<label class="col-sm-3 control-label no-padding-right" for=""> Mother's Name </label>
+	<label class="col-sm-3 control-label no-padding-right" for=""> Mother's Name* </label>
 	<div class="col-sm-9">
 		<input type="text" id="mother_name" name="mother_name" value="" class="col-xs-10 col-sm-5" required>
 	</div>
@@ -167,7 +174,7 @@
 
 
 					<div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="title"> DOB </label>
+                        <label class="col-sm-3 control-label no-padding-right" for="title"> DOB* </label>
                         <div class="col-sm-9">
                             <input type="date" min="1975-01-01" max="2020-12-31" id="dob" name="dob" autocomplete value="" placeholder="Pick Date" class="col-xs-10 col-sm-5 dateofbirth"  required>
                         </div>
@@ -181,7 +188,7 @@
 </div>
 
 <div class="form-group">
-	<label class="col-sm-3 control-label no-padding-right" for=""> Gender </label>
+	<label class="col-sm-3 control-label no-padding-right" for=""> Gender* </label>
 	<div class="col-sm-9">
 		
 		
@@ -195,14 +202,21 @@
 
 					
                     <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="mobile"> Mobile No.</label>
+                        <label class="col-sm-3 control-label no-padding-right" for="mobile"> Mobile No.*</label>
                         <div class="col-sm-9">
-                            <input type="text" id="mobile" name="mobile" value="" placeholder="" class="col-xs-10 col-sm-5 numeric" required />
+                            <input type="number" id="mobile" name="mobile" value="" placeholder="" class="col-xs-10 col-sm-5 numeric" required />
                         </div>
                     </div>
 					
 					<div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="aadhar"> Aadhar No. </label>
+                        <label class="col-sm-3 control-label no-padding-right" for="email"> Email ID*</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="email" name="email" value="" placeholder="" class="col-xs-10 col-sm-5" required />
+                        </div>
+                    </div>
+					
+					<div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="aadhar"> Aadhar No.* </label>
                         <div class="col-sm-9">
                             <input type="text" id="aadhar" name="aadhar" value="" placeholder="" class="col-xs-10 col-sm-5 numeric" required />
                         </div>
@@ -211,7 +225,7 @@
 					<h3 class="" style="padding-left:100px;">Address</h3>
 					
                     <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="village"> Village </label>
+                        <label class="col-sm-3 control-label no-padding-right" for="village"> Village* </label>
                             <div class="col-sm-9">
 							<input type="text" id="village" name="village" value="" placeholder="" class="col-xs-10 col-sm-5" required />
 							
@@ -219,7 +233,7 @@
                     </div>
 					
 					<div class="form-group">
-						<label class="col-sm-3 control-label no-padding-right" for="post_office"> Post Office </label>
+						<label class="col-sm-3 control-label no-padding-right" for="post_office"> Post Office* </label>
 							<div class="col-sm-9">
 							<input type="text" id="post_office" name="post_office" value="" placeholder="" class="col-xs-10 col-sm-5" required />
 							
@@ -227,7 +241,7 @@
 					</div>
 
 <div class="form-group">
-	<label class="col-sm-3 control-label no-padding-right" for="police_station"> Police Station </label>
+	<label class="col-sm-3 control-label no-padding-right" for="police_station"> Police Station* </label>
 		<div class="col-sm-9">
 		<input type="text" id="police_station" name="police_station" value="" placeholder="" class="col-xs-10 col-sm-5" required />
 		
@@ -235,7 +249,7 @@
 </div>
 
 <div class="form-group">
-	<label class="col-sm-3 control-label no-padding-right" for="block"> Block </label>
+	<label class="col-sm-3 control-label no-padding-right" for="block"> Block* </label>
 		<div class="col-sm-9">
 		<input type="text" id="block" name="block" value="" placeholder="" class="col-xs-10 col-sm-5" required />
 		
@@ -245,7 +259,7 @@
 
 
 <div class="form-group">
-	<label class="col-sm-3 control-label no-padding-right" for="district"> District </label>
+	<label class="col-sm-3 control-label no-padding-right" for="district"> District* </label>
 		<div class="col-sm-9">
 		
 		<select name="district" class="col-xs-10 col-sm-5" required>
@@ -294,7 +308,7 @@
 </div>
 
 <div class="form-group">
-	<label class="col-sm-3 control-label no-padding-right" for="state"> State </label>
+	<label class="col-sm-3 control-label no-padding-right" for="state"> State* </label>
 		<div class="col-sm-9">
 		
 		<select name="state" class="col-xs-10 col-sm-5" required>
@@ -306,14 +320,14 @@
 
 
 <div class="form-group">
-	<label class="col-sm-3 control-label no-padding-right" for=""> Photo </label>
+	<label class="col-sm-3 control-label no-padding-right" for=""> Photo* </label>
 	<div class="col-sm-9">
 		<input type="file" id="" name="photo"  class="col-xs-10 col-sm-5" required>
 	</div>
 </div>
 
 <div class="form-group">
-	<label class="col-sm-3 control-label no-padding-right" for=""> Signature </label>
+	<label class="col-sm-3 control-label no-padding-right" for=""> Signature* </label>
 	<div class="col-sm-9">
 		<input type="file" id="" name="signature"  class="col-xs-10 col-sm-5" required>
 	</div>
@@ -323,7 +337,7 @@
 
 <h2>Academic Qualification</h2>
 
-<table class="table table-bordered">
+<table class="table table-bordered table-responsive">
 	<tr>
 		<td>Exam Passed</td>
 		<td>Board/University</td>
@@ -436,6 +450,16 @@ I here be declare that the information given by me in this application is true a
                         </ul>
                     </div>
                 </div>
+				
+				<div class="single-defination">
+                    <h4 class="mb-20">Important Links</h4>
+                    <div class="holder">
+                        <ul id="ticker01">
+                                <li><a href="{{url('ubsk/get_reg_form')}}">Print Registration Form</a></li>
+                        </ul>
+                    </div>
+                </div>
+				
             </div>
         </div>
     </div>

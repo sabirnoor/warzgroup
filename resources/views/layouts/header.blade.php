@@ -44,7 +44,7 @@ $controller = explode('@', $class_basename);
                                 <a class="nav-link" href="{{url('/')}}">Contact</a>
                             </li>
                             <li class="d-none d-lg-block">
-                                <a class="btn_1" href="#">Donate</a>
+                                <a class="btn_1" href="{{url('donate')}}">Donate</a>
                             </li>
                         </ul>
                     </div>

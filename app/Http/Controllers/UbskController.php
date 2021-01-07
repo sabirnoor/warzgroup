@@ -8,6 +8,7 @@ use App\Qualification;
 use App\District;
 use App\Block;
 use Validator;
+use DB;
 
 class UbskController extends Controller
 {
@@ -47,6 +48,7 @@ class UbskController extends Controller
 		$upload_path = public_path() . '/upload/';
 		
         $RegistrationList = Registration::where(array('IsDelete' => 0))->orderBy('id', 'ASC')->get();
+		
         if ($request->isMethod('post')){
             $post = $request->all(); //echo '<pre>';print_r($post);die;
 			
@@ -56,7 +58,7 @@ class UbskController extends Controller
                 );
                 $validator = Validator::make($post, $rules);
                 if($validator->fails()) {
-                    return redirect('registration')->with('msgerror', 'Photo should be .png,.jpg,.jpeg!');
+                    return redirect('ubsk/registration')->with('msgerror', 'Photo should be .png,.jpg,.jpeg!');
                 }
                 if(!is_dir("public/upload/photos/")) {
                     mkdir("public/upload/photos/", 0777, true);
@@ -79,7 +81,7 @@ class UbskController extends Controller
 				);
 				$validator = Validator::make($post, $rules);
 				if($validator->fails()) {
-					return redirect('registration')->with('msgerror', 'Signature should be .png,.jpg,.jpeg!');
+					return redirect('ubsk/registration')->with('msgerror', 'Signature should be .png,.jpg,.jpeg!');
 				}
 				if(!is_dir("public/upload/signatures/")) {
 					mkdir("public/upload/signatures/", 0777, true);
@@ -95,9 +97,18 @@ class UbskController extends Controller
 					$image->move($path, $imageName2);
 				}
 			}
-
+			
+			$last_record = Registration::where(array('IsDelete' => 0))->orderBy('id', 'DESC')->first();
+			
+			$arr = explode('WZ',$last_record->registration_no); 
+			$digit = $arr[1];
+			
+			$prefix = 'WZ';
+			$suffix = $digit+1;
+			$new_registration_no = $prefix.$suffix;
+			//echo $new_registration_no; exit;
             $data = array(
-                'registration_no' => time(),                
+                'registration_no' => $new_registration_no,                
                 'post_applied_for' => $post['post_applied_for'],
 				'applying_district' => $post['applying_district'],
 				'applying_block' => $post['applying_block'],
@@ -115,6 +126,7 @@ class UbskController extends Controller
                 'dob' => $post['dob'],
                 'blood_group' => $post['blood_group'],
                 'mobile' => $post['mobile'],
+                'email' => $post['email'],
                 'aadhar' => $post['aadhar'],
                 'gender' => $post['gender'],
                 //'dob' => DateFormates($post['dob'],'-'),
@@ -142,7 +154,7 @@ class UbskController extends Controller
 						);
 						$validator = Validator::make($post, $rules);
 						if($validator->fails()) {
-							return redirect('registration')->with('msgerror', 'Marksheet should be .png,.jpg,.jpeg!');
+							return redirect('ubsk/registration')->with('msgerror', 'Marksheet should be .png,.jpg,.jpeg!');
 						}
 						if(!is_dir("public/upload/marksheets/")) {
 							mkdir("public/upload/marksheets/", 0777, true);
@@ -185,7 +197,7 @@ class UbskController extends Controller
 					);
 					$validator = Validator::make($post, $rules);
 					if($validator->fails()) {
-						return redirect('registration')->with('msgerror', 'Marksheet should be .png,.jpg,.jpeg!');
+						return redirect('ubsk/registration')->with('msgerror', 'Marksheet should be .png,.jpg,.jpeg!');
 					}
 					if(!is_dir("public/upload/marksheets/")) {
 						mkdir("public/upload/marksheets/", 0777, true);
@@ -231,7 +243,7 @@ class UbskController extends Controller
 					);
 					$validator = Validator::make($post, $rules);
 					if($validator->fails()) {
-						return redirect('registration')->with('msgerror', 'Marksheet should be .png,.jpg,.jpeg!');
+						return redirect('ubsk/registration')->with('msgerror', 'Marksheet should be .png,.jpg,.jpeg!');
 					}
 					if(!is_dir("public/upload/marksheets/")) {
 						mkdir("public/upload/marksheets/", 0777, true);
@@ -283,6 +295,43 @@ class UbskController extends Controller
 		//print_r($districts);exit;
         return view('ubsk/registration', compact('RegistrationList','id','details','districts','blocks'));
     
+	}
+	
+	public function get_reg_form(Request $request){
+		return view('ubsk/get_reg_form');
+	}
+	public function print_registration_form(Request $request){
+		
+		$post = $request->all(); //echo '<pre>';print_r($post);die;
+		if(!isset($post['reg_no']) || !isset($post['dob']) || !isset($post['mobile'])){
+			return redirect('ubsk/get_reg_form')->with('msgerror', 'Error Occured!');
+		}
+		//$details = Registration::where(array('registration_no' => $reg_no))->first();
+		
+		$details = DB::table('registration as r')->select('r.*', 'd.name as district_name', 'b.name as block_name')
+			->join('district as d', 'd.id', '=', 'r.applying_district')
+			->join('block as b', 'b.id', '=', 'r.applying_block')
+			->where('r.registration_no', $post['reg_no'])
+			->where('r.dob', $post['dob'])
+			->where('r.mobile', $post['mobile'])
+			->first();
+			
+		if(!isset($details->id)){
+			return redirect('ubsk/get_reg_form')->with('msgerror', 'No record found!');
+		}
+			
+		$qual_details = null;
+		
+		if(isset($details->id)){
+			$registration_id = $details->id;
+			$qual_details = Qualification::where(array('registration_id' => $registration_id))->get();
+		}
+		
+		
+		
+		//print_r($qual_details); exit;
+		
+		return view('ubsk/print_reg_form', compact('details','qual_details'));
 	}
 	
 	public function getblocksbydistrict(Request $request) {

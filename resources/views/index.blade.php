@@ -10,7 +10,7 @@
                             <h5>Every child yearns to learn</h5>
                             <h1>WARZ Educational & Welfare Trust</h1>
                             <p>Warz Educational & Welfare Trust is a registered non profitable charitable organization established with a great thought and vision for the upliftment of downtrodden, educationally backward & weaker section of the society...</p>
-                            <a href="#" class="btn_1">Donate </a>
+                            <a href="{{url('donate')}}" class="btn_1">Donate </a>
                             <a href="{{url('about')}}" class="btn_2">Read More </a>
                         </div>
                     </div>

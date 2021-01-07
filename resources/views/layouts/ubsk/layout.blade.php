@@ -15,7 +15,7 @@ $controller = explode('@', $class_basename);
     <?php if($controller[1]=='registration'){ ?>
         <title>Registration</title>
     <?php }else{ ?>
-        <title>उज्ज्वल भविष्य शिछण केंद्र</title>
+        <title>Ujjawal Bhawishya Shikshan Kendra</title>
     <?php } ?>
 
     <meta name="description" content="Best computer center in seemanchal, Health group, best school in seemanchal.cheap and best education system., play school">
@@ -175,6 +175,24 @@ img.zoom {
         .jssora051:hover {opacity:.8;}
         .jssora051.jssora051dn {opacity:.5;}
         .jssora051.jssora051ds {opacity:.3;pointer-events:none;}
+		
+		@media print {
+		.noprint{display:none;}
+		 hr { display:block; }
+		 
+		 #print_reg_footer { 
+		 display:block; 
+		 background-color:#017bb8;
+		 -webkit-print-color-adjust: exact;
+		 position:absolute;bottom:0px;
+		 height:50px;width:100%;
+		 color:#fff;
+		 text-align:center;
+		 padding:10px;
+		 font-size:20px;
+		 
+		 }
+		}
     </style>
 	<script>
             var site_url = "{!! url('/') !!}";
@@ -525,5 +543,13 @@ $(document).ready(function(){
 });
 </script>
 <?php }?>
+<script>
+   function print_form(){
+			//$("#hidden-print-div").html($("#printme").html());
+			window.print();
+			
+		  }
+</script>
 </body>
+<div id="hidden-print-div" style="display:none"></div>
 </html>
