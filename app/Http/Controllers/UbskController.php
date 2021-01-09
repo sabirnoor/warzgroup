@@ -7,8 +7,10 @@ use App\Registration;
 use App\Qualification;
 use App\District;
 use App\Block;
+use App\Result;
 use Validator;
 use DB;
+
 
 class UbskController extends Controller
 {
@@ -337,7 +339,7 @@ class UbskController extends Controller
 		return view('ubsk/print_reg_form', compact('details','qual_details'));
 	}
 	
-	//Show Registration form after user submit registration form
+	//Show Registration form automatically after user submit registration form
 	public function show_registration_form(Request $request,$encrypted_reg_no=null){
 		
 		if(!isset($encrypted_reg_no)){
@@ -365,6 +367,32 @@ class UbskController extends Controller
 		//print_r($qual_details); exit;
 		
 		return view('ubsk/print_reg_form', compact('details','qual_details'));
+	}
+	
+	public function show_result(Request $request){
+		
+		$post = $request->all(); //echo '<pre>';print_r($post);die;
+		
+		$details = null; $result = null; 
+		if(isset($post['reg_no']) && isset($post['dob']) && isset($post['mobile'])){
+							
+		$details = DB::table('registration as r')->select('r.*', 'd.name as district_name', 'b.name as block_name')
+			->join('district as d', 'd.id', '=', 'r.applying_district', 'LEFT')
+			->join('block as b', 'b.id', '=', 'r.applying_block', 'LEFT')
+			->where('r.registration_no', $post['reg_no'])
+			->where('r.dob', $post['dob'])
+			->where('r.mobile', $post['mobile'])
+			->first();
+			
+			if(!isset($details->id)){
+				return redirect('ubsk/show_result')->with('msgerror', 'No record found!');
+			}
+		
+		$result = Result::where(array('registration_no' => $post['reg_no']))->first();
+		
+		}
+		
+		return view('ubsk/show_result', compact('details','result','post'));
 	}
 	
 	public function getblocksbydistrict(Request $request) {

@@ -35,6 +35,9 @@ Route::prefix('ubsk')->group(function () {
 	Route::get('get_reg_form', 'UbskController@get_reg_form');
 	Route::match(['get', 'post'], '/print_reg_form', array('uses' => 'UbskController@print_registration_form'));
 	Route::get('show_reg_form/{encrypted_reg_no?}', 'UbskController@show_registration_form');
+	
+	//result
+	Route::match(['get', 'post'], '/show_result', array('uses' => 'UbskController@show_result'));
 });
 
 Route::match(['get', 'post'], '/get-district-blocks', array('uses' => 'UbskController@getblocksbydistrict'));

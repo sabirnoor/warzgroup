@@ -45,7 +45,7 @@
                 <div class="single-defination">
                     <h4 class="mb-20">&nbsp;</h4>
                     <div class="row">
-            <div class="col-xs-12">
+            <div class="col-md-12">
                 @if (session('msgerror'))
                 <div class="alert alert-danger light no-margin">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -61,34 +61,33 @@
                 <hr>
                 @endif
                 
-				<h1 class="text-center mb-4">Print Application Form</h1>
+				<h1 class="text-center mb-4">Check Your Result</h1>
 				<br/>
 				
-                <form class="form-horizontal" autocomplete="off" method="post" role="form" action="{{url('ubsk/print_reg_form')}}">
+                <form class="form-horizontal" autocomplete="off" method="post" role="form" action="{{url('ubsk/show_result')}}">
                     {{csrf_field()}}
 					
                     
 					<div class="form-group">
 						<label class="col-sm-6 control-label " for=""> Registration Number* </label>
 						<div class="col-sm-6">
-							<input type="text" id="reg_no" name="reg_no" value="" class="" required>
+							<input type="text" id="reg_no" name="reg_no" value="<?php echo (isset($post['reg_no']) && $post['reg_no']<>'')?$post['reg_no']:''?>" class="" required>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label class="col-sm-6 control-label " for=""> Date Of Birth* </label>
 						<div class="col-sm-6">
-							<input type="date" min="1975-01-01" max="2020-12-31" id="dob" name="dob" value="" placeholder="Pick Date" class="dateofbirth"  required>
+							<input type="date" min="1975-01-01" max="2020-12-31" id="dob" name="dob" value="<?php echo (isset($post['dob']) && $post['dob']<>'')?$post['dob']:''?>" placeholder="Pick Date" class="dateofbirth"  required>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label class="col-sm-6 control-label " for=""> Mobile No.* </label>
 						<div class="col-sm-6">
-							<input type="number" id="mobile" name="mobile" value="" class="" required>
+							<input type="number" id="mobile" name="mobile" value="<?php echo (isset($post['mobile']) && $post['mobile']<>'')?$post['mobile']:''?>" class="" required>
 						</div>
 					</div>
-					
 					
 					
                     <div class="space-4"></div>
@@ -102,8 +101,22 @@
                         </div>
                     </div>
                 </form>
-
+				
+				<?php //var_dump($result); ?>
+				
+				<?php if(isset($details->id)){ ?>
+				<h1 class="mt-4 text-center">Result:</h1>
                
+				<?php if(isset($result->is_selected) && $result->is_selected=='Yes'){ ?>
+				<p class="text-success">You are selected.</p>
+               
+				<?php }elseif(isset($result->is_selected) && $result->is_selected=='No'){ ?>
+				<p class="text-danger">You are not selected.</p>
+               <?php }else{ ?>
+				<p class="text-info">Result not declared.</p>
+               <?php } ?>
+			   
+			   <?php } ?>
 
                 <!-- PAGE CONTENT ENDS -->
             </div><!-- /.col -->

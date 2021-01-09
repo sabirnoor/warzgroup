@@ -523,6 +523,156 @@ $(document).on("change", "#applying_district", function (e) {
 
     });
 </script>
+
+<script type="text/javascript">
+
+ $('#candidate_photo').on('change', function() {  
+	
+	// Type validation	
+    var filePath = $('#candidate_photo').val(); 
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+    if(!allowedExtensions.exec(filePath)){
+        alert('Please upload file having extensions .jpeg/.jpg/.png only.');
+        $('#candidate_photo').val('');
+		$("#candidate_photo_size").html('');
+        return false;
+    }
+	
+	//size validation
+	$("#candidate_photo_size").html('');
+	const photo_file_size =  
+	   (this.files[0].size / 1024).toFixed(2); 
+
+	if (photo_file_size > 200) { 
+		alert("File should not be greater than 200 KB"); 
+		$('#candidate_photo').val('');
+		$("#candidate_photo_size").html('');
+	} else { 
+		$("#candidate_photo_size").html('<b>' + 
+		   'File size: ' + photo_file_size + " kb" + '</b>'); 
+	} 
+	
+	
+	
+}); 
+
+$('#candidate_signature').on('change', function() {  
+	
+	// Type validation	
+    var filePath = $('#candidate_signature').val(); 
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+    if(!allowedExtensions.exec(filePath)){
+        alert('Please upload file having extensions .jpeg/.jpg/.png only.');
+        $('#candidate_signature').val('');
+		$("#candidate_signature_size").html('');
+        return false;
+    }
+	
+	//size validation
+	$("#candidate_signature_size").html('');
+	const signature_file_size =  
+	   (this.files[0].size / 1024).toFixed(2); 
+
+	if (signature_file_size > 200) { 
+		alert("File should not be greater than 200 KB"); 
+		$('#candidate_signature').val('');
+		$("#candidate_signature_size").html('');
+	} else { 
+		$("#candidate_signature_size").html('<b>' + 
+		   'File size: ' + signature_file_size + " kb" + '</b>'); 
+	} 
+	
+	
+	
+});
+
+$('#candidate_marksheet1').on('change', function() {  
+	
+	// Type validation	
+    var filePath = $('#candidate_marksheet1').val(); 
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+    if(!allowedExtensions.exec(filePath)){
+        alert('Please upload file having extensions .jpeg/.jpg/.png only.');
+        $('#candidate_marksheet1').val('');
+		$("#candidate_marksheet1_size").html('');
+        return false;
+    }
+	
+	//size validation
+	$("#candidate_marksheet1_size").html('');
+	const marksheet1_file_size =  
+	   (this.files[0].size / 1024).toFixed(2); 
+
+	if (marksheet1_file_size > 400) { 
+		alert("File should not be greater than 400 KB"); 
+		$('#candidate_marksheet1').val('');
+		$("#candidate_marksheet1_size").html('');
+	} else { 
+		$("#candidate_marksheet1_size").html('<b>' + 
+		   'File size: ' + marksheet1_file_size + " kb" + '</b>'); 
+	} 		
+	
+});
+
+$('#candidate_marksheet2').on('change', function() {  
+	
+	// Type validation	
+    var filePath = $('#candidate_marksheet2').val(); 
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+    if(!allowedExtensions.exec(filePath)){
+        alert('Please upload file having extensions .jpeg/.jpg/.png only.');
+        $('#candidate_marksheet2').val('');
+		$("#candidate_marksheet2_size").html('');
+        return false;
+    }
+	
+	//size validation
+	$("#candidate_marksheet2_size").html('');
+	const marksheet2_file_size =  
+	   (this.files[0].size / 1024).toFixed(2); 
+
+	if (marksheet2_file_size > 400) { 
+		alert("File should not be greater than 400 KB"); 
+		$('#candidate_marksheet2').val('');
+		$("#candidate_marksheet2_size").html('');
+	} else { 
+		$("#candidate_marksheet2_size").html('<b>' + 
+		   'File size: ' + marksheet2_file_size + " kb" + '</b>'); 
+	} 		
+	
+});
+
+$('#candidate_marksheet3').on('change', function() {  
+	
+	// Type validation	
+    var filePath = $('#candidate_marksheet3').val(); 
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+    if(!allowedExtensions.exec(filePath)){
+        alert('Please upload file having extensions .jpeg/.jpg/.png only.');
+        $('#candidate_marksheet3').val('');
+		$("#candidate_marksheet3_size").html('');
+        return false;
+    }
+	
+	//size validation
+	$("#candidate_marksheet3_size").html('');
+	const marksheet3_file_size =  
+	   (this.files[0].size / 1024).toFixed(2); 
+
+	if (marksheet3_file_size > 400) { 
+		alert("File should not be greater than 400 KB"); 
+		$('#candidate_marksheet3').val('');
+		$("#candidate_marksheet3_size").html('');
+	} else { 
+		$("#candidate_marksheet3_size").html('<b>' + 
+		   'File size: ' + marksheet3_file_size + " kb" + '</b>'); 
+	} 		
+	
+});
+				
+
+        </script>
+		
 <?php }?>
 
 <?php if ($controller[1] == 'gallery') {?>

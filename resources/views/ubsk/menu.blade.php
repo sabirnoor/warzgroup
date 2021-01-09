@@ -34,7 +34,7 @@
     </li> 
     <li class="nav-item active"> 
         <a class="nav-link"
-        href="#"> 
+        href="{{url('ubsk/show_result')}}"> 
         Result 
         </a> 
     </li> 
