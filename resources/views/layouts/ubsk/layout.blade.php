@@ -397,6 +397,8 @@ function show_address_fields(){
 			$("#marks3").removeAttr('required');
 			$("#marksheet3").removeAttr('required');
 			
+			$("#donation_amount").text('Tola Teacher Donation Fee: 500 Rs.');
+			
         }
 		if( $('#post_applied_for').val()==="Panchayat Coordinator(P.C.)"){
 			
@@ -422,7 +424,9 @@ function show_address_fields(){
 			$("#appeared_or_passed3").removeAttr('required');
 			$("#passed_year3").removeAttr('required');
 			$("#marks3").removeAttr('required');			
-			$("#marksheet3").removeAttr('required');			
+			$("#marksheet3").removeAttr('required');
+
+			$("#donation_amount").text('Panchayat Coordinator Donation Fee: 700 Rs.');			
 			
         }
 		if( $('#post_applied_for').val()==="Block Coordinator(B.C.)"){
@@ -449,6 +453,8 @@ function show_address_fields(){
 			$("#passed_year3").attr('required','true');
 			$("#marks3").attr('required','true');
 			$("#marksheet3").attr('required','true');
+			
+			$("#donation_amount").text('Block Coordinator Donation Fee: 1000 Rs.');			
         }
 		
 		if( $('#post_applied_for').val()==="District Coordinator(D.C.)"){
@@ -476,6 +482,8 @@ function show_address_fields(){
 			$("#passed_year3").attr('required','true');
 			$("#marks3").attr('required','true');
 			$("#marksheet3").attr('required','true');
+			
+			$("#donation_amount").text('District Coordinator Donation Fee: 1500 Rs.');
         }
 }
 

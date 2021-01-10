@@ -139,6 +139,11 @@
 					</div>
 				</div>
 				
+				<div class="form-group" id="donation_amount_div" style="">
+					<label class="col-sm-12 text-success" for="" id="donation_amount"></label>
+					
+				</div>
+				
 					<h3 class="" style="padding-left:100px;">Personal Detail</h3>
 					
 					<div class="form-group">
@@ -168,9 +173,6 @@
 		<input type="text" id="mother_name" name="mother_name" value="" class="col-xs-10 col-sm-5" required>
 	</div>
 </div>
-
-
-
 
 
 					<div class="form-group">
@@ -209,9 +211,9 @@
                     </div>
 					
 					<div class="form-group">
-                        <label class="col-sm-3 control-label " for="email"> Email ID*</label>
+                        <label class="col-sm-3 control-label " for="email"> Email ID</label>
                         <div class="col-sm-9">
-                            <input type="text" id="email" name="email" value="" placeholder="" class="col-xs-10 col-sm-5" required />
+                            <input type="text" id="email" name="email" value="" placeholder="" class="col-xs-10 col-sm-5" />
                         </div>
                     </div>
 					
@@ -356,7 +358,7 @@
 		<td><input type="text" id="exam_passed1" name="exam_passed1" value="" class="form-control" placeholder="10th or equivalent" required></td>
 		<td><input type="text" id="board_or_university1" name="board_or_university1" value="" class="form-control" required></td>
 		<td><input type="text" id="appeared_or_passed1" name="appeared_or_passed1" value="" class="form-control" required></td>
-		<td><input type="text" id="passed_year1" name="passed_year1" value="" class="form-control" required></td>
+		<td><input type="number" id="passed_year1" name="passed_year1" value="" class="form-control" maxlength="4" required></td>
 		<td><input type="text" id="marks1" name="marks1" value="" class="form-control" required></td>
 		<td><input type="file" id="candidate_marksheet1" name="marksheet1"  class="form-control" required>
 		<p id="candidate_marksheet1_size"></p>
@@ -369,7 +371,7 @@
 		<td><input type="text" id="exam_passed2" name="exam_passed2" value="" class="form-control" placeholder="12th or equivalent"></td>
 		<td><input type="text" id="board_or_university2" name="board_or_university2" value="" class="form-control"></td>
 		<td><input type="text" id="appeared_or_passed2" name="appeared_or_passed2" value="" class="form-control" ></td>
-		<td><input type="text" id="passed_year2" name="passed_year2" value="" class="form-control"></td>
+		<td><input type="number" id="passed_year2" name="passed_year2" value="" class="form-control" maxlength="4"></td>
 		<td><input type="text" id="marks2" name="marks2" value="" class="form-control"></td>
 		<td><input type="file" id="candidate_marksheet2" name="marksheet2"  class="form-control">
 		<p id="candidate_marksheet2_size"></p>
@@ -381,7 +383,7 @@
 		<td><input type="text" id="exam_passed3" name="exam_passed3" value="" class="form-control" placeholder="Graduation or equivalent"></td>
 		<td><input type="text" id="board_or_university3" name="board_or_university3" value="" class="form-control"></td>
 		<td><input type="text" id="appeared_or_passed3" name="appeared_or_passed3" value="" class="form-control" ></td>
-		<td><input type="text" id="passed_year3" name="passed_year3" value="" class="form-control"></td>
+		<td><input type="number" id="passed_year3" name="passed_year3" value="" class="form-control" maxlength="4"></td>
 		<td><input type="text" id="marks3" name="marks3" value="" class="form-control"></td>
 		<td><input type="file" id="candidate_marksheet3" name="marksheet3"  class="form-control">
 		<p id="candidate_marksheet3_size"></p>
