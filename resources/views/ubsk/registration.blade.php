@@ -459,7 +459,23 @@ I here be declare that the information given by me in this application is true a
                     <h4 class="mb-20">Latest Updates</h4>
                     <div class="holder">
                         <ul id="ticker01">
-                                <li><span>01/10/2020</span> <a href="{{url('ubsk/registration')}}">Registration is going on.</a></li>
+                                
+								<?php 
+                            if($NewseventsList){
+                                foreach ($NewseventsList as $value) {
+                                 
+                            ?>
+							<li><span><?=date('d-M-Y',strtotime($value['eventdate']))?></span> <a href="#"><?=$value['eventtitle']?></a>
+							
+							<?php if(isset($value['eventdetails']) && $value['eventdetails']<>''){
+								echo '<br />';
+								echo $value['eventdetails'];
+								}?>
+							</li>
+							<?php
+                                }
+                            }
+                        ?>
                         </ul>
                     </div>
                 </div>
@@ -468,7 +484,8 @@ I here be declare that the information given by me in this application is true a
                     <h4 class="mb-20">Important Links</h4>
                     <div class="holder">
                         <ul id="ticker01">
-                                <li><a href="{{url('ubsk/get_reg_form')}}">Print Application Form</a></li>
+                                <li><a href="{{url('ubsk/registration')}}">Registration Now</a></li>
+								<li><a href="{{url('ubsk/get_reg_form')}}">Print Application Form</a></li>
 								<li><a href="{{url('ubsk/show_result')}}">Check Result</a></li>
                         </ul>
                     </div>

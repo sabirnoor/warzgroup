@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Newsevents;
 use App\Registration;
 use App\Qualification;
 use App\District;
@@ -31,7 +32,9 @@ class UbskController extends Controller
      */
     public function index()
     {
-        return view('ubsk/index');
+        $NewseventsList = Newsevents::where(array('IsDelete' => 0))->orderBy('orders_by', 'ASC')->get();
+		return view('ubsk/index',compact('NewseventsList'));
+		
     }
      
 	
@@ -50,6 +53,7 @@ class UbskController extends Controller
 		$upload_path = public_path() . '/upload/';
 		
         $RegistrationList = Registration::where(array('IsDelete' => 0))->orderBy('id', 'ASC')->get();
+        $NewseventsList = Newsevents::where(array('IsDelete' => 0))->orderBy('orders_by', 'ASC')->get();
 		
         if ($request->isMethod('post')){
             $post = $request->all(); //echo '<pre>';print_r($post);die;
@@ -300,12 +304,13 @@ class UbskController extends Controller
 		$districts = District::where('id', '>', 0)->orderBy('name', 'ASC')->get();
 		$blocks = Block::where('id', '>', 0)->orderBy('name', 'ASC')->get();
 		//print_r($districts);exit;
-        return view('ubsk/registration', compact('RegistrationList','id','details','districts','blocks'));
+        return view('ubsk/registration', compact('RegistrationList','id','details','districts','blocks','NewseventsList'));
     
 	}
 	
 	public function get_reg_form(Request $request){
-		return view('ubsk/get_reg_form');
+		$NewseventsList = Newsevents::where(array('IsDelete' => 0))->orderBy('orders_by', 'ASC')->get();
+		return view('ubsk/get_reg_form',compact('NewseventsList'));
 	}
 	public function print_registration_form(Request $request){
 		
@@ -391,8 +396,9 @@ class UbskController extends Controller
 		$result = Result::where(array('registration_no' => $post['reg_no']))->first();
 		
 		}
-		
-		return view('ubsk/show_result', compact('details','result','post'));
+		$NewseventsList = Newsevents::where(array('IsDelete' => 0))->orderBy('orders_by', 'ASC')->get();
+				
+		return view('ubsk/show_result', compact('details','result','post','NewseventsList'));
 	}
 	
 	public function getblocksbydistrict(Request $request) {
@@ -415,7 +421,8 @@ class UbskController extends Controller
 	}
 	
     public function aboutus(Request $request){
-		return view('ubsk/aboutus');
+		$NewseventsList = Newsevents::where(array('IsDelete' => 0))->orderBy('orders_by', 'ASC')->get();
+		return view('ubsk/aboutus',compact('NewseventsList'));
 	}
 	
 	public function gallery(Request $request){
