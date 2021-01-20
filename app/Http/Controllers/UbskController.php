@@ -118,7 +118,8 @@ class UbskController extends Controller
 				'applying_ward' => $post['applying_ward'],
                 'candidate_name' => $post['candidate_name'],
                 'father_name' => $post['father_name'],
-                'mother_name' => $post['mother_name'],
+                'husband_name' => $post['husband_name'],
+				'mother_name' => $post['mother_name'],
                 'village' => $post['village'],
                 'post_office' => $post['post_office'],
                 'police_station' => $post['police_station'],
@@ -131,7 +132,6 @@ class UbskController extends Controller
                 'email' => $post['email'],
                 'aadhar' => $post['aadhar'],
                 'gender' => $post['gender'],
-                //'dob' => DateFormates($post['dob'],'-'),
                 'IsDelete' => 0,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
