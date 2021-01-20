@@ -9,7 +9,7 @@ $controller = explode('@', $class_basename);
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand customLogo" href="{{url('/')}}"> <img src="{{url('public/assets/img/logo-ubsk.jpeg')}}" height="120" alt="logo"> </a>
+                    <a class="navbar-brand customLogo" href="{{url('/')}}"> <img src="{{url('public/assets/img/logo-ubsk.png')}}" height="120" alt="logo"> </a>
                     <h2 class="customLogoname" style="color:#fff;font-size:40px;">उज्जवल भविष्य शिक्षण केन्द्र</h2>
 					<!--<button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
