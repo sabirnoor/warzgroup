@@ -1,5 +1,52 @@
 @extends('layouts.ubsk.layout')
 @section('content')
+<?php 
+if(old('post_applied_for')!==null){$sess_post_applied_for = old('post_applied_for');}
+if(old('applying_district')!==null){$sess_applying_district = old('applying_district');}
+if(old('applying_block')!==null){$sess_applying_block = old('applying_block');}
+if(old('applying_panchayat')!==null){$sess_applying_panchayat = old('applying_panchayat');}
+if(old('applying_ward')!==null){$sess_applying_ward = old('applying_ward');}
+if(old('candidate_name')!==null){$sess_candidate_name = old('candidate_name');}
+if(old('father_name')!==null){$sess_father_name = old('father_name');}
+if(old('husband_name')!==null){$sess_husband_name = old('husband_name');}
+if(old('mother_name')!==null){$sess_mother_name = old('mother_name');}
+if(old('village')!==null){$sess_village = old('village');}
+if(old('post_office')!==null){$sess_post_office = old('post_office');}
+if(old('police_station')!==null){$sess_police_station = old('police_station');}
+if(old('block')!==null){$sess_block = old('block');}
+if(old('district')!==null){$sess_district = old('district');}
+if(old('state')!==null){$sess_state = old('state');}
+if(old('dob')!==null){$sess_dob = old('dob');}
+if(old('blood_group')!==null){$sess_blood_group = old('blood_group');}
+if(old('mobile')!==null){$sess_mobile = old('mobile');}
+if(old('email')!==null){$sess_email = old('email');}
+if(old('aadhar')!==null){$sess_aadhar = old('aadhar');}
+if(old('gender')!==null){$sess_gender = old('gender');}
+
+
+if(old('degree1')!==null){$sess_matric_degree = old('degree1');}
+if(old('exam_passed1')!==null){$sess_matric_exam_passed = old('exam_passed1');}
+if(old('board_or_university1')!==null){$sess_matric_board_or_university = old('board_or_university1');}
+if(old('appeared_or_passed1')!==null){$sess_matric_appeared_or_passed = old('appeared_or_passed1');}
+if(old('passed_year1')!==null){$sess_matric_passed_year = old('passed_year1');}
+if(old('marks1')!==null){$sess_matric_marks = old('marks1');}
+
+if(old('degree2')!==null){$sess_intermediate_degree = old('degree2');}
+if(old('exam_passed2')!==null){$sess_intermediate_exam_passed = old('exam_passed2');}
+if(old('board_or_university2')!==null){$sess_intermediate_board_or_university = old('board_or_university2');}
+if(old('appeared_or_passed2')!==null){$sess_intermediate_appeared_or_passed = old('appeared_or_passed2');}
+if(old('passed_year2')!==null){$sess_intermediate_passed_year = old('passed_year2');}
+if(old('marks2')!==null){$sess_intermediate_marks = old('marks2');}
+
+if(old('degree3')!==null){$sess_graduation_degree = old('degree3');}
+if(old('exam_passed3')!==null){$sess_graduation_exam_passed = old('exam_passed3');}
+if(old('board_or_university3')!==null){$sess_graduation_board_or_university = old('board_or_university3');}
+if(old('appeared_or_passed3')!==null){$sess_graduation_appeared_or_passed = old('appeared_or_passed3');}
+if(old('passed_year3')!==null){$sess_graduation_passed_year = old('passed_year3');}
+if(old('marks3')!==null){$sess_graduation_marks = old('marks3');}
+
+//var_dump($intermediate_details);
+?>
 <section class="breadcrumb breadcrumb_bg2">
     <div class="container">
         <div class="row">
@@ -77,10 +124,10 @@
 							<select name="post_applied_for" id="post_applied_for" class="col-xs-10 col-sm-5"  required>
 								
 								<option value="">Select</option>
-								<option value="Tola Teacher(T.T)">Tola Teacher(T.T)</option>
-								<option value="Panchayat Coordinator(P.C.)">Panchayat Coordinator(P.C.)</option>
-								<option value="Block Coordinator(B.C.)">Block Coordinator(B.C.)</option>
-								<option value="District Coordinator(D.C.)">District Coordinator(D.C.)</option>
+								<option value="Tola Teacher(T.T)" <?=(isset($sess_post_applied_for) && $sess_post_applied_for=='Tola Teacher(T.T)')?'selected="selected"':''?>>Tola Teacher(T.T)</option>
+								<option value="Panchayat Coordinator(P.C.)" <?=(isset($sess_post_applied_for) && $sess_post_applied_for=='Panchayat Coordinator(P.C.)')?'selected="selected"':''?>>Panchayat Coordinator(P.C.)</option>
+								<option value="Block Coordinator(B.C.)" <?=(isset($sess_post_applied_for) && $sess_post_applied_for=='Block Coordinator(B.C.)')?'selected="selected"':''?>>Block Coordinator(B.C.)</option>
+								<option value="District Coordinator(D.C.)" <?=(isset($sess_post_applied_for) && $sess_post_applied_for=='District Coordinator(D.C.)')?'selected="selected"':''?>>District Coordinator(D.C.)</option>
 								
 							</select>
 							
@@ -100,7 +147,7 @@
                                 foreach ($districts as $value) {
 									
                             ?>
-								<option value="<?=$value->id?>"><?=$value->name?></option>
+								<option value="<?=$value->id?>" <?=(isset($sess_applying_district) && $sess_applying_district==$value->id)?'selected="selected"':''?>><?=$value->name?></option>
 								<?php
                                 }
                             }
@@ -127,7 +174,7 @@
 				<div class="form-group" id="applying_panchayat_div"  style="display:none">
 					<label class="col-sm-3 control-label " for=""> Panchayat* </label>
 					<div class="col-sm-9">
-						<input type="text" id="applying_panchayat" name="applying_panchayat" value="" class="col-xs-10 col-sm-5">
+						<input type="text" id="applying_panchayat" name="applying_panchayat" value="<?=isset($sess_applying_panchayat)?$sess_applying_panchayat:''?>" class="col-xs-10 col-sm-5">
 					</div>
 				</div>
 					
@@ -135,7 +182,7 @@
 				<div class="form-group" id="applying_ward_div" style="display:none">
 					<label class="col-sm-3 control-label " for=""> Ward* </label>
 					<div class="col-sm-9">
-						<input type="text" id="applying_ward" name="applying_ward" value="" class="col-xs-10 col-sm-5">
+						<input type="text" id="applying_ward" name="applying_ward" value="<?=isset($sess_applying_ward)?$sess_applying_ward:''?>" class="col-xs-10 col-sm-5">
 					</div>
 				</div>
 				
@@ -149,28 +196,28 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label " for=""> Candidate Name* </label>
 						<div class="col-sm-9">
-							<input type="text" id="candidate_name" name="candidate_name" value="" class="col-xs-10 col-sm-5" required>
+							<input type="text" id="candidate_name" name="candidate_name" value="<?=isset($sess_candidate_name)?$sess_candidate_name:''?>" class="col-xs-10 col-sm-5" required>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label class="col-sm-3 control-label " for=""> Father's Name* </label>
 						<div class="col-sm-9">
-							<input type="text" id="father_name" name="father_name" value="" class="col-xs-10 col-sm-5" required>
+							<input type="text" id="father_name" name="father_name" value="<?=isset($sess_father_name)?$sess_father_name:''?>" class="col-xs-10 col-sm-5" required>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label class="col-sm-3 control-label " for=""> Husband's Name </label>
 						<div class="col-sm-9">
-							<input type="text" id="husband_name" name="husband_name" value="" class="col-xs-10 col-sm-5">
+							<input type="text" id="husband_name" name="husband_name" value="<?=isset($sess_husband_name)?$sess_husband_name:''?>" class="col-xs-10 col-sm-5">
 						</div>
 					</div>
 
 <div class="form-group">
 	<label class="col-sm-3 control-label " for=""> Mother's Name* </label>
 	<div class="col-sm-9">
-		<input type="text" id="mother_name" name="mother_name" value="" class="col-xs-10 col-sm-5" required>
+		<input type="text" id="mother_name" name="mother_name" value="<?=isset($sess_mother_name)?$sess_mother_name:''?>" class="col-xs-10 col-sm-5" required>
 	</div>
 </div>
 
@@ -178,14 +225,14 @@
 					<div class="form-group">
                         <label class="col-sm-3 control-label " for="title"> DOB* </label>
                         <div class="col-sm-9">
-                            <input type="date" min="1975-01-01" max="2020-12-31" id="dob" name="dob" autocomplete value="" placeholder="Pick Date" class="col-xs-10 col-sm-5 dateofbirth"  required>
+                            <input type="date" min="1975-01-01" max="2020-12-31" id="dob" name="dob" autocomplete value="<?=isset($sess_dob)?$sess_dob:''?>" placeholder="Pick Date" class="col-xs-10 col-sm-5 dateofbirth"  required>
                         </div>
                     </div>
 					
 					<div class="form-group">
 	<label class="col-sm-3 control-label " for=""> Blood Group  </label>
 	<div class="col-sm-9">
-		<input type="text" id="blood_group" name="blood_group" value="" class="col-xs-10 col-sm-5">
+		<input type="text" id="blood_group" name="blood_group" value="<?=isset($sess_blood_group)?$sess_blood_group:''?>" class="col-xs-10 col-sm-5">
 	</div>
 </div>
 
@@ -196,8 +243,8 @@
 		
 		<select name="gender" class="col-xs-10 col-sm-5" required>
 		<option value="">Select</option>
-		<option value="Male">Male</option>
-		<option value="Female">Female</option>
+		<option value="Male" <?=(isset($sess_gender) && $sess_gender=='Male')?'selected="selected"':''?>>Male</option>
+		<option value="Female" <?=(isset($sess_gender) && $sess_gender=='Female')?'selected="selected"':''?>>Female</option>
 		</select>						
 	</div>
 </div>
@@ -206,21 +253,21 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label " for="mobile"> Mobile No.*</label>
                         <div class="col-sm-9">
-                            <input type="number" id="mobile" name="mobile" value="" placeholder="" class="col-xs-10 col-sm-5 numeric" required />
+                            <input type="number" id="mobile" name="mobile" value="<?=isset($sess_mobile)?$sess_mobile:''?>" placeholder="" class="col-xs-10 col-sm-5 numeric" required />
                         </div>
                     </div>
 					
 					<div class="form-group">
                         <label class="col-sm-3 control-label " for="email"> Email ID</label>
                         <div class="col-sm-9">
-                            <input type="text" id="email" name="email" value="" placeholder="" class="col-xs-10 col-sm-5" />
+                            <input type="text" id="email" name="email" value="<?=isset($sess_email)?$sess_email:''?>" placeholder="" class="col-xs-10 col-sm-5" />
                         </div>
                     </div>
 					
 					<div class="form-group">
                         <label class="col-sm-3 control-label " for="aadhar"> Aadhar No.* </label>
                         <div class="col-sm-9">
-                            <input type="text" id="aadhar" name="aadhar" value="" placeholder="" class="col-xs-10 col-sm-5 numeric" required />
+                            <input type="text" id="aadhar" name="aadhar" value="<?=isset($sess_aadhar)?$sess_aadhar:''?>" placeholder="" class="col-xs-10 col-sm-5 numeric" required />
                         </div>
                     </div>
 					
@@ -229,7 +276,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label " for="village"> Village* </label>
                             <div class="col-sm-9">
-							<input type="text" id="village" name="village" value="" placeholder="" class="col-xs-10 col-sm-5" required />
+							<input type="text" id="village" name="village" value="<?=isset($sess_village)?$sess_village:''?>" placeholder="" class="col-xs-10 col-sm-5" required />
 							
                             </div>
                     </div>
@@ -237,7 +284,7 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label " for="post_office"> Post Office* </label>
 							<div class="col-sm-9">
-							<input type="text" id="post_office" name="post_office" value="" placeholder="" class="col-xs-10 col-sm-5" required />
+							<input type="text" id="post_office" name="post_office" value="<?=isset($sess_post_office)?$sess_post_office:''?>" placeholder="" class="col-xs-10 col-sm-5" required />
 							
 							</div>
 					</div>
@@ -245,7 +292,7 @@
 <div class="form-group">
 	<label class="col-sm-3 control-label " for="police_station"> Police Station* </label>
 		<div class="col-sm-9">
-		<input type="text" id="police_station" name="police_station" value="" placeholder="" class="col-xs-10 col-sm-5" required />
+		<input type="text" id="police_station" name="police_station" value="<?=isset($sess_police_station)?$sess_police_station:''?>" placeholder="" class="col-xs-10 col-sm-5" required />
 		
 		</div>
 </div>
@@ -253,7 +300,7 @@
 <div class="form-group">
 	<label class="col-sm-3 control-label " for="block"> Block* </label>
 		<div class="col-sm-9">
-		<input type="text" id="block" name="block" value="" placeholder="" class="col-xs-10 col-sm-5" required />
+		<input type="text" id="block" name="block" value="<?=isset($sess_block)?$sess_block:''?>" placeholder="" class="col-xs-10 col-sm-5" required />
 		
 		</div>
 </div>
@@ -314,7 +361,7 @@
 		<div class="col-sm-9">
 		
 		<select name="state" class="col-xs-10 col-sm-5" required>
-		<option value="Bihar">Bihar</option>
+		<option value="Bihar" <?=(isset($sess_state) && $sess_state=='Bihar')?'selected="selected"':''?>>Bihar</option>
 		</select>
 		
 		</div>
@@ -355,11 +402,11 @@
 	</tr>
 	<tr>
 		<input type="hidden" id="degree1" name="degree1" value="matric">
-		<td><input type="text" id="exam_passed1" name="exam_passed1" value="" class="form-control" placeholder="10th or equivalent" required></td>
-		<td><input type="text" id="board_or_university1" name="board_or_university1" value="" class="form-control" required></td>
-		<td><input type="text" id="appeared_or_passed1" name="appeared_or_passed1" value="" class="form-control" required></td>
-		<td><input type="number" id="passed_year1" name="passed_year1" value="" class="form-control" maxlength="4" required></td>
-		<td><input type="text" id="marks1" name="marks1" value="" class="form-control" required></td>
+		<td><input type="text" id="exam_passed1" name="exam_passed1" value="<?=isset($sess_matric_exam_passed)?$sess_matric_exam_passed:''?>" class="form-control" placeholder="10th or equivalent" required></td>
+		<td><input type="text" id="board_or_university1" name="board_or_university1" value="<?=isset($sess_matric_board_or_university)?$sess_matric_board_or_university:''?>" class="form-control" required></td>
+		<td><input type="text" id="appeared_or_passed1" name="appeared_or_passed1" value="<?=isset($sess_matric_appeared_or_passed)?$sess_matric_appeared_or_passed:''?>" class="form-control" required></td>
+		<td><input type="number" id="passed_year1" name="passed_year1" value="<?=isset($sess_matric_passed_year)?$sess_matric_passed_year:''?>" class="form-control" maxlength="4" required></td>
+		<td><input type="text" id="marks1" name="marks1" value="<?=isset($sess_matric_marks)?$sess_matric_marks:''?>" class="form-control" <?=isset($id)?'':'required'?>" class="form-control" required></td>
 		<td><input type="file" id="candidate_marksheet1" name="marksheet1"  class="form-control" required>
 		<p id="candidate_marksheet1_size"></p>
 		</td>
@@ -368,11 +415,11 @@
 	
 	<tr>
 		<input type="hidden" id="degree2" name="degree2" value="intermediate">
-		<td><input type="text" id="exam_passed2" name="exam_passed2" value="" class="form-control" placeholder="12th or equivalent"></td>
-		<td><input type="text" id="board_or_university2" name="board_or_university2" value="" class="form-control"></td>
-		<td><input type="text" id="appeared_or_passed2" name="appeared_or_passed2" value="" class="form-control" ></td>
-		<td><input type="number" id="passed_year2" name="passed_year2" value="" class="form-control" maxlength="4"></td>
-		<td><input type="text" id="marks2" name="marks2" value="" class="form-control"></td>
+		<td><input type="text" id="exam_passed2" name="exam_passed2" value="<?=isset($sess_intermediate_exam_passed)?$sess_intermediate_exam_passed:''?>" class="form-control" placeholder="12th or equivalent"></td>
+		<td><input type="text" id="board_or_university2" name="board_or_university2" value="<?=isset($sess_intermediate_board_or_university)?$sess_intermediate_board_or_university:''?>" class="form-control"></td>
+		<td><input type="text" id="appeared_or_passed2" name="appeared_or_passed2" value="<?=isset($sess_intermediate_appeared_or_passed)?$sess_intermediate_appeared_or_passed:''?>" class="form-control" ></td>
+		<td><input type="number" id="passed_year2" name="passed_year2" value="<?=isset($sess_intermediate_passed_year)?$sess_intermediate_passed_year:''?>" class="form-control" maxlength="4"></td>
+		<td><input type="text" id="marks2" name="marks2" value="<?=isset($sess_intermediate_marks)?$sess_intermediate_marks:''?>" class="form-control"></td>
 		<td><input type="file" id="candidate_marksheet2" name="marksheet2"  class="form-control">
 		<p id="candidate_marksheet2_size"></p>
 		</td>
@@ -380,11 +427,11 @@
 	
 	<tr>
 		<input type="hidden" id="degree3" name="degree3" value="graduation">
-		<td><input type="text" id="exam_passed3" name="exam_passed3" value="" class="form-control" placeholder="Graduation or equivalent"></td>
-		<td><input type="text" id="board_or_university3" name="board_or_university3" value="" class="form-control"></td>
-		<td><input type="text" id="appeared_or_passed3" name="appeared_or_passed3" value="" class="form-control" ></td>
-		<td><input type="number" id="passed_year3" name="passed_year3" value="" class="form-control" maxlength="4"></td>
-		<td><input type="text" id="marks3" name="marks3" value="" class="form-control"></td>
+		<td><input type="text" id="exam_passed3" name="exam_passed3" value="<?=isset($sess_graduation_exam_passed)?$sess_graduation_exam_passed:''?>" class="form-control" placeholder="Graduation or equivalent"></td>
+		<td><input type="text" id="board_or_university3" name="board_or_university3" value="<?=isset($sess_graduation_board_or_university)?$sess_graduation_board_or_university:''?>" class="form-control"></td>
+		<td><input type="text" id="appeared_or_passed3" name="appeared_or_passed3" value="<?=isset($sess_graduation_appeared_or_passed)?$sess_graduation_appeared_or_passed:''?>" class="form-control" ></td>
+		<td><input type="number" id="passed_year3" name="passed_year3" value="<?=isset($sess_graduation_passed_year)?$sess_graduation_passed_year:''?>" class="form-control" maxlength="4"></td>
+		<td><input type="text" id="marks3" name="marks3" value="<?=isset($sess_graduation_marks)?$sess_graduation_marks:''?>" class="form-control"></td>
 		<td><input type="file" id="candidate_marksheet3" name="marksheet3"  class="form-control">
 		<p id="candidate_marksheet3_size"></p>
 		</td>

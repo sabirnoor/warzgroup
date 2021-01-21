@@ -51,13 +51,59 @@ class UbskController extends Controller
 	public function registration(Request $request, $id = null){
 		
 		$upload_path = public_path() . '/upload/';
-		
-        $RegistrationList = Registration::where(array('IsDelete' => 0))->orderBy('id', 'ASC')->get();
-        $NewseventsList = Newsevents::where(array('IsDelete' => 0))->orderBy('orders_by', 'ASC')->get();
-		
+		        		
         if ($request->isMethod('post')){
             $post = $request->all(); //echo '<pre>';print_r($post);die;
 			
+			
+			if(empty(trim($post['post_applied_for']))){
+				return redirect()->back()->withInput()->with('msgerror', 'Please enter Post Applied For.');
+			}
+			if(empty(trim($post['candidate_name']))){
+				return redirect()->back()->withInput()->with('msgerror', 'Please enter name');
+			}
+			if(empty(trim($post['father_name']))){
+				return redirect()->back()->withInput()->with('msgerror', 'Please enter father\'s name.');
+			}
+			if(empty(trim($post['mother_name']))){
+				return redirect()->back()->withInput()->with('msgerror', 'Please enter mother\'s name.');
+			}
+			if(empty(trim($post['dob']))){
+				return redirect()->back()->withInput()->with('msgerror', 'Please enter dob.');
+			}
+			if(empty(trim($post['gender']))){
+				return redirect()->back()->withInput()->with('msgerror', 'Please enter gender.');
+			}
+			if(empty(trim($post['mobile']))){
+				return redirect()->back()->withInput()->with('msgerror', 'Please enter mobile no.');
+			}
+			if(empty(trim($post['aadhar']))){
+				return redirect()->back()->withInput()->with('msgerror', 'Please enter aadhar no.');
+			}
+			if(empty(trim($post['village']))){
+				return redirect()->back()->withInput()->with('msgerror', 'Please enter village.');
+			}
+			if(empty(trim($post['post_office']))){
+				return redirect()->back()->withInput()->with('msgerror', 'Please enter post office.');
+			}
+			if(empty(trim($post['police_station']))){
+				return redirect()->back()->withInput()->with('msgerror', 'Please enter police station.');
+			}
+			if(empty(trim($post['block']))){
+				return redirect()->back()->withInput()->with('msgerror', 'Please enter block.');
+			}
+			if(empty(trim($post['district']))){
+				return redirect()->back()->withInput()->with('msgerror', 'Please enter district.');
+			}
+			
+			$check_record = Registration::where(array('mobile' => $post['mobile'],'IsDelete' => 0))->first();	
+			
+			if(isset($check_record->id)){
+				  return redirect()->back()->withInput()->with('msgerror', 'Mobile No already exists! Try with different no.');
+			}
+			
+			   
+			//kkk
 			if ($request->has('photo')) {
                 $rules = array(
                     //'photo' => 'required | mimes:png,jpg,jpeg | max:1000',
@@ -300,6 +346,9 @@ class UbskController extends Controller
             }
         }
         
+		$RegistrationList = Registration::where(array('IsDelete' => 0))->orderBy('id', 'ASC')->get();
+        $NewseventsList = Newsevents::where(array('IsDelete' => 0))->orderBy('orders_by', 'ASC')->get();
+		
 		$details = Registration::where(array('id' => $id))->first();
 		$districts = District::where('id', '>', 0)->orderBy('name', 'ASC')->get();
 		$blocks = Block::where('id', '>', 0)->orderBy('name', 'ASC')->get();
