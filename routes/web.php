@@ -40,5 +40,24 @@ Route::prefix('ubsk')->group(function () {
 	Route::match(['get', 'post'], '/show_result', array('uses' => 'UbskController@show_result'));
 });
 
+Route::prefix('wps')->group(function () {
+	Route::match(['get', 'post'], '/', array('uses' => 'WpsController@index'));
+	Route::get('about', 'WpsController@about');
+	Route::get('discipline', 'WpsController@discipline');
+	Route::get('for_better_future', 'WpsController@for_better_future');
+	Route::get('pledge', 'WpsController@pledge');
+	Route::get('time_table_dress_mera_sujhaw', 'WpsController@time_table_dress_mera_sujhaw');
+	Route::get('rules_regulations', 'WpsController@rules_regulations');
+	Route::get('facilities', 'WpsController@facilities');
+	Route::get('activities', 'WpsController@activities');
+	Route::get('kindergarten', 'WpsController@kindergarten');
+	Route::get('parents', 'WpsController@parents');
+	Route::get('results', 'WpsController@results');
+	Route::get('contact', 'WpsController@contact');
+	Route::get('time_table_dress_mera_sujhaw', 'WpsController@time_table_dress_mera_sujhaw');
+	
+	
+});
+
 Route::match(['get', 'post'], '/get-district-blocks', array('uses' => 'UbskController@getblocksbydistrict'));
 
